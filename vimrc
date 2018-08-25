@@ -1,0 +1,20 @@
+call plug#begin('~/.vim/plugged')
+Plug 'vim-latex/vim-latex'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+set shiftwidth=4
+set tabstop=4
+syntax on
+set autoindent
+set smartindent
+set relativenumber
+set number
+set mouse=a
+set mousem=popup
+set wildignore+=*.pdf,*.aux,*.gif,*.png,*.nav,*.JPG
+set wildmode=longest,list,full
+set wildmenu
+let g:tex_flavor='latex'
