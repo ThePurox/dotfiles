@@ -70,9 +70,9 @@ bindsym $mod+Shift+F3 exec gksu $filemanager
 bindsym $mod+p exec $filemanager "`xcwd`"
 bindsym $mod+Shift+p exec gksu $filemanager "`xcwd`"
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+# bindsym $mod+t exec --no-startup-id pkill compton
+# bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+# bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -228,6 +228,7 @@ assign [class="Claws-mail"] $ws3
 assign [class="Gajim"] $ws4
 assign [class="TelegramDesktop"] $ws4
 assign [class="Liferea"] $ws9
+assign [class="QuiteRss"] $ws9
 for_window [class="qutebrowser"] disable border  floating disable
 
 # Open specific applications in floating mode
