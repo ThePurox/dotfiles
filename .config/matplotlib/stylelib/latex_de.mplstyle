@@ -1,0 +1,12 @@
+font.family         : serif
+font.size           : 16.0
+text.usetex         : True
+text.latex.unicode  : True
+text.latex.preamble : \usepackage[locale=DE]{siunitx}, \usepackage{amsmath} , \usepackage{icomma}
+axes.formatter.use_locale : True
+axes.formatter.use_mathtext : True
+xtick.direction     : in    ## direction: in, out, or inout
+ytick.direction     : in    ## direction: in, out, or inout
+savefig.format      : pdf      ## png, ps, pdf, svg
+savefig.bbox        : tight ## 'tight' or 'standard'.
+savefig.transparent : True    ## setting that controls whether figures are saved with a
