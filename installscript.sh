@@ -1,4 +1,5 @@
 #!/bin/bash
+# add backup of old files
 WD=$(pwd)
 DIRS=$(find . -type d -not -path "./.git*" | sed 's|^./||')
 FILES=$(find . -type f -not -path "./.git*" | sed 's|^./||')
