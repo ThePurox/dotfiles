@@ -67,22 +67,22 @@ interval=5
 label=
 instance=/
 interval=30
-separator=false
+# separator=false
 
-[disk]
-label=
+# [disk]
+# label=
 # instance=/
-interval=30
+# interval=30
 
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
+#[iface]
 #instance=wlan0
-color=#00FF00
-interval=10
-separator=false
+#color=#00FF00
+#interval=10
+#separator=false
 
 [wifi]
 #instance=wlp3s0

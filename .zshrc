@@ -61,7 +61,8 @@ alias free='free -m'                                            # Show sizes in 
 alias ls="ls --color=auto"
 alias bc="bc -l"
 alias fixit='sudo rm -f /var/lib/pacman/db.lck'
-alias update='yaourt -Syua'
+#alias update='trizen -Syua'
+alias update='~/scripts/update.sh'
 alias conf='vim ~/.config/i3/config'
 alias comp='vim ~/.config/compton.conf'
 alias inst='sudo pacman -S'
@@ -70,7 +71,7 @@ alias mirrors='sudo pacman-mirrors -g'
 alias printer='system-config-printer'
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias cdm='cd $HOME/Dokumente/Master'
+alias sp='emacsclient -c -nw'
 
 
 # Theming section  

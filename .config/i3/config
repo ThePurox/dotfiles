@@ -2,8 +2,9 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # custom variables
-set $browser qutebrowser
+set $browser firefox
 set $filemanager pcmanfm
+set $terminal urxvt
 
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -32,7 +33,7 @@ font xft:Noto Sans 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec $terminal
 # bindsym $mod+Shift+Return exec ~/scripts/termInSameDir.sh
 bindsym $mod+Shift+Return exec urxvt -cd "`xcwd`"
 
@@ -51,7 +52,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ################################################################################################
 
 exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
@@ -61,15 +62,17 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-mute 0 #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec $browser
 bindsym $mod+F3 exec $filemanager
 bindsym $mod+Shift+F3 exec gksu $filemanager
 bindsym $mod+p exec $filemanager "`xcwd`"
 bindsym $mod+Shift+p exec gksu $filemanager "`xcwd`"
-bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+F5 exec $terminal -e 'mocp'
 # bindsym $mod+t exec --no-startup-id pkill compton
 # bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -224,6 +227,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
 assign [class="qutebrowser"] $ws2
+assign [class="Firefox"] $ws2
 assign [class="Claws-mail"] $ws3
 assign [class="Gajim"] $ws4
 assign [class="TelegramDesktop"] $ws4
@@ -273,8 +277,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# bindsym $mod+Shift+e exec i3-msg exit
-
+ bindsym $mod+Shift+e exec i3-msg exit
 # Set shut down, restart and locking features
 set $Locker ~/scripts/blurlock
 bindsym $mod+o mode "$mode_system"
@@ -320,7 +323,7 @@ mode "resize" {
 # Lock screen
 # bindsym $mod+9 exec --no-startup-id blurlock
 # bindsym $mod+Ctrl+l exec --no-startup-id ~/scripts/autolocktoggle.sh
-bindsym $mod+Ctrl+l exec --no-startup-id xautolock -toggle
+# bindsym $mod+Ctrl+l exec --no-startup-id xautolock -toggle
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -328,17 +331,14 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id  compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-#exec --no-startup-id clipit
+# exec --no-startup-id pamac-tray
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
-exec --no-startup-id start_conky_green
+# exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock -detectsleep -corners 0-+- -cornerdelay 2 -cornerredelay 20
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id setxkbmap  -option caps:swapescape
-# exec --no-startup-id i3-msg "workspace $ws4; append_layout /home/nico/.i3/messeging.json"
+# exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id fix_xcursor
 exec --no-startup-id sh ~/scripts/autostart.sh
 
 
@@ -400,6 +400,20 @@ set $i3_color14         #268BD2
 set $i3_color15         #000000
 set $i3_color16         #ffffff
 set $i3_color17         #0c0c0c
+#
+set $blue_light			#659AD9
+set $blue 				#3E7DCA
+set $black 				#2D313B
+#
+set $red				#DC322F
+set $red_dark			#A54242
+set $blue				#268BD2
+set $bluea				#4084D6
+set $blue_light			#65ACFF
+set $blue_lighta		#4491ED
+set $grey				#586875
+set $grey_light			#7C8389
+set $black_deap			#1D1F21
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
@@ -418,12 +432,14 @@ bar {
 
 	colors {
 #       background $transparent
-        background $i3_background
+        # background $i3_background
+         background $black_deap
         statusline $i3_text
         separator  $i3_separator
 
 #                                  border  backgr. text
-        focused_workspace   $i3_color1  $i3_color4  $i3_text
+        # focused_workspace   $i3_color1  $i3_color4  $i3_text
+        focused_workspace   $i3_color1  $blue  $i3_text
         active_workspace    $i3_color2  $i3_color3  $i3_color5
         inactive_workspace  $i3_color2  $i3_color3  $i3_color6
         urgent_workspace    $i3_color4  $i3_color5  $i3_color7

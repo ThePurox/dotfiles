@@ -29,7 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(erlang
+   '(
      html
      python
      common-lisp
@@ -171,8 +171,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Inconsolata"
+                               :size 19
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -384,6 +384,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (add-hook 'LaTeX-mode-hook 'cdlatex-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -416,7 +417,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yapfify web-mode tagedit smeargle slime-company slime slim-mode scss-mode sass-mode ranger rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro org-mime org-download mu4e-maildirs-extension mu4e-alert ht alert log4e gntp magit-gitflow live-py-mode ibuffer-projectile hy-mode dash-functional htmlize helm-pydoc helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub with-editor erlang emmet-mode disaster cython-mode company-web web-completion-data company-statistics company-c-headers company-auctex company-anaconda company common-lisp-snippets color-identifiers-mode cmake-mode clang-format cdlatex auto-yasnippet yasnippet auto-dictionary auctex-latexmk auctex anaconda-mode pythonic ac-ispell auto-complete org-tree-slide ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (lolcode-mode treepy graphql yasnippet-snippets yapfify web-mode tagedit smeargle slime-company slime slim-mode scss-mode sass-mode ranger rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro org-mime org-download mu4e-maildirs-extension mu4e-alert ht alert log4e gntp magit-gitflow live-py-mode ibuffer-projectile hy-mode dash-functional htmlize helm-pydoc helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub with-editor erlang emmet-mode disaster cython-mode company-web web-completion-data company-statistics company-c-headers company-auctex company-anaconda company common-lisp-snippets color-identifiers-mode cmake-mode clang-format cdlatex auto-yasnippet yasnippet auto-dictionary auctex-latexmk auctex anaconda-mode pythonic ac-ispell auto-complete org-tree-slide ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(read-quoted-char-radix 16))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
