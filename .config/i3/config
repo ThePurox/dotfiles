@@ -5,6 +5,7 @@
 set $browser firefox
 set $filemanager pcmanfm
 set $terminal urxvt
+# set $terminal xfce4-terminal
 
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -68,8 +69,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 # Start Applications
 bindsym $mod+F2 exec $browser
-bindsym $mod+F3 exec $filemanager
-bindsym $mod+Shift+F3 exec gksu $filemanager
+# bindsym $mod+F3 exec $filemanager
+# bindsym $mod+Shift+F3 exec gksu $filemanager
 bindsym $mod+p exec $filemanager "`xcwd`"
 bindsym $mod+Shift+p exec gksu $filemanager "`xcwd`"
 bindsym $mod+F5 exec $terminal -e 'mocp'
@@ -122,7 +123,7 @@ bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_
 # split orientation
 bindsym $mod+Shift+v split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
+bindsym $mod+t split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -349,7 +350,7 @@ exec --no-startup-id sh ~/scripts/autostart.sh
 # Change the variable name at the place you want to match the color
 # of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
+# If you want your bar to have the same background color as your
 # terminal background change the line 362 from:
 # background  $i3_background
 # to:
@@ -374,7 +375,7 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Color palette used for i3 
+# Color palette used for i3
 # Variables are set based on the documentation:
 # https://i3wm.org/dovs/userguide.html#variables
 # Changing the value of one of the variables will
@@ -475,7 +476,7 @@ gaps outer -4
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -516,9 +517,11 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# second screen 
+# multi screen script
+bindsym $mod+F3 exec --no-startup-id ~/scripts/displayselect
+# second screen
 # exec_always --no-startup-id xrandr --output eDP1 --mode 1920x1080 --primary --output HDMI-1-2 --mode 1920x1080 --left-of eDP1
 # exec_always --no-startup-id xrandr  --output HDMI-1-2 --mode 1920x1080 --left-of eDP1
 
 # wallpaper
-exec_always --no-startup-id feh --randomize --bg-fill ~/Bilder/wallpaper/* 
+exec_always --no-startup-id ~/scripts/setbg
